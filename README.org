@@ -1,0 +1,40 @@
+* metsalto-distiller
+  A suite of programs to convert METS/ALTO data into IIIF Manifests, and perhaps other formats.
+
+** Rationale
+   - PU Library is adopting IIIF for its digital library web-viewing platform
+   - PU Library has a moderate-to-large amount of data in METS/ALTO
+   - There is a broader community need, beyond PUL, for a tool like this
+
+** Requirements
+   It should be able to use a METS Profile but shouldn't need one.
+
+   It should be highly configurable. It should run with a sensible set
+   of defaults, but one should be able to override lots of things,
+   including the following:
+
+   - what IIIF version to target
+   - how to parse and transform the various sections of the METS
+   - what level of text granularity to expose
+
+   Different projects will have different profiles for descriptive
+   metadata (usually some form of MODS, but docWorks has a few
+   standard uses, and projects -- like Blue Mountain -- have
+   overridden them). The distiller should be able to produce something
+   reasonable by default, but one should also be able to specify
+   mappings explicitly. A reasonable way to implement this is via XSLT.
+
+   The package should include some utilities:
+
+   - fixing image paths :: in the ALTO generated from docWorks, the
+        image-file path is improperly specified. A utility should be
+        able to take a new path and correct the references in a batch
+        of ALTO files.
+   - analyzer :: One should be able to run a METS/ALTO bundle through
+                 a utility that runs tests and checks: are the files
+                 valid? Are all the pieces reachable? What versions
+                 of the various XML schemas are being used? Can the
+                 bundle be distilled?
+
+
+
